@@ -4,3 +4,13 @@
 // Partiales
 @import "layout";
 @import "panel";
+
+input[type="text"],input[type="password"],input[type="email"],
+button,.btn {
+  border-radius: 0px;
+}
+
+.btn.btn-primary {
+  border-color: #fff;
+  background-color: $brand-primary;
+}

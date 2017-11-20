@@ -14,7 +14,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -24,8 +23,12 @@ class HomeController extends Controller
      */
     public function index(CookieJar $cookieJar)
     {
-        $jwt = app('jwt')->generate();
-        $cookieJar->queue(cookie('shared_cookie', $jwt, 60*24*7, null, 'armies-at-war.dev'));
+        if (\Auth::check()) {
+            $jwt = app('jwt')->generate();
+            $cookieJar->queue(cookie('shared_cookie', $jwt, 60*24*7, null, 'armies-at-war.dev'));
+
+            return view('logged.home');
+        }
 
         return view('home');
     }
