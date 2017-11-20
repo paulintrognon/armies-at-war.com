@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Cookie\CookieJar;
 
 class HomeController extends Controller
 {
@@ -21,8 +22,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CookieJar $cookieJar)
     {
+        $jwt = app('jwt')->generate();
+        $cookieJar->queue(cookie('shared_cookie', $jwt, 60*24*7, null, 'armies-at-war.dev'));
+
         return view('home');
     }
 }
