@@ -1,31 +1,7 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layout.app')
 
-  <title>Laravel</title>
+@section('title', 'Accueil')
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-  <!-- Styles -->
-
-</head>
-<body>
-  <nav>
-    <ul>
-      <li>
-        <a href="/play">Jouer</a>
-      </li>
-      <li>
-        <a href="/about">A propos</a>
-      </li>
-      <li>
-        <a href="/forum">Forum</a>
-      </li>
-    </ul>
-  </nav>
-</body>
-</html>
+@section('content')
+    <p>This is my body content.</p>
+@endsection
