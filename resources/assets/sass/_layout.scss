@@ -1,3 +1,11 @@
 nav.main-nav.navbar {
-    background-color: $brand-primary;
+  background-color: $brand-primary;
+
+  .nav-link {
+    color: #fff;
+
+    &.active {
+      font-weight: bold;
+    }
+  }
 }
