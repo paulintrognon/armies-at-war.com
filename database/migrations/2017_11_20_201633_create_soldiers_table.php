@@ -33,7 +33,7 @@ class CreateSoldiersTable extends Migration
 
         Schema::table('soldiers', function (Blueprint $table) {
             $table->foreign('user_id', 'soldiers_ibfk_1')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('user_id', 'soldiers_ibfk_2')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('army_id', 'soldiers_ibfk_2')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

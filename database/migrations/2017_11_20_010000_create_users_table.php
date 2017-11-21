@@ -15,11 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('password');
+            $table->integer('army_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreign('army_id', 'users_ibfk_1')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -30,6 +35,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_ibfk_1');
+        });
+
         Schema::dropIfExists('users');
     }
 }

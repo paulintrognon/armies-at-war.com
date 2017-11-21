@@ -15,8 +15,8 @@ class CreateArmiesTable extends Migration
     {
         Schema::create('armies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
-            $table->string('name');
+            $table->string('code')->unique();
+            $table->string('name')->unique();
         });
     }
 
