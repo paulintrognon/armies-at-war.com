@@ -5,9 +5,18 @@
 @import "layout";
 @import "panel";
 
+body {
+  font-family: Roboto;
+}
+
 input[type="text"],input[type="password"],input[type="email"],
 button,.btn {
   border-radius: 0px;
+}
+
+.btn:hover {
+  background-color: #D5DAD5;
+  cursor: pointer;
 }
 
 .btn.btn-primary {

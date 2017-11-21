@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Army;
+use App\Models\Soldier;
 
 class EnrolementController extends Controller
 {
@@ -58,11 +59,36 @@ class EnrolementController extends Controller
 
     public function createSoldiers()
     {
-        return view('logged.enrolement.createSoldiers');
+        $army = \Auth::user()->army;
+        return view('logged.enrolement.createSoldiers', [
+            'army' => $army,
+        ]);
     }
 
     public function createSoldiersPost(Request $request)
     {
-        # code...
+        $user = \Auth::user();
+
+        if ($user->soldiers()->count() > 0) {
+            return redirect(env('APP_PLAY_URL'));
+        }
+
+        foreach ($request->gender as $index => $gender) {
+            $soldier = new Soldier([
+                'gender' => $gender,
+                'firstName' => $request->firstName[$index],
+                'lastName' => $request->lastName[$index],
+                'healthPoints' => 100,
+                'actionPoints' => 20,
+                'sight' => 3,
+                'lastTurn' => new \DateTime(),
+                'nextTurn' => new \DateTime(),
+            ]);
+            $soldier->user()->associate($user);
+            $soldier->army()->associate($user->army);
+            $soldier->save();
+        }
+
+        return redirect(env('APP_PLAY_URL'));
     }
 }

@@ -19,10 +19,11 @@ class CreateSoldiersTable extends Migration
             $table->integer('army_id')->unsigned();
             $table->string('firstName', 20);
             $table->string('lastName', 20);
+            $table->string('gender', 10);
             $table->integer('healthPoints');
             $table->integer('actionPoints');
-            $table->integer('coordinateX');
-            $table->integer('coordinateY');
+            $table->integer('coordinateX')->nullable();
+            $table->integer('coordinateY')->nullable();
             $table->integer('sight');
             $table->dateTime('lastTurn');
             $table->dateTime('nextTurn');

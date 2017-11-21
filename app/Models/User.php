@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Army');
     }
+
+    public function soldiers()
+    {
+        return $this->hasMany('App\Models\Soldier');
+    }
 }
