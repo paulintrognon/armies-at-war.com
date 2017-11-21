@@ -14,3 +14,13 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::prefix('enrolement')->group(function () {
+    Route::get('/', 'EnrolementController@index')->name('enrolement.index');
+
+    Route::get('/choix-de-l-armee', 'EnrolementController@chooseArmy')->name('enrolement.chooseArmy');
+    Route::get('/choix-de-l-armee/post/{armyId}', 'EnrolementController@chooseArmyPost')->name('enrolement.chooseArmy.post');
+
+    Route::get('/creation-des-soldats', 'EnrolementController@createSoldiers')->name('enrolement.createSoldiers');
+    Route::get('/creation-des-soldats/post', 'EnrolementController@createSoldiersPost')->name('enrolement.createSoldiers.post');
+});

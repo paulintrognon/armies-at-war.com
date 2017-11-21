@@ -13,12 +13,12 @@ class ArmiesTableSeeder extends Seeder
     {
         DB::table('armies')->insert([
             [
-                'name' => 'L\'Alliance Terrestre',
-                'code' => 'AT',
+                'name' => 'La Démocratie Unie',
+                'code' => 'DU',
             ],
             [
-                'name' => 'Le Grand Empire',
-                'code' => 'GE',
+                'name' => 'L\'Empire du Levant',
+                'code' => 'EL',
             ],
         ]);
     }

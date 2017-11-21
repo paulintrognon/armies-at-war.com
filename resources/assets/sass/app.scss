@@ -14,3 +14,12 @@ button,.btn {
   border-color: #fff;
   background-color: $brand-primary;
 }
+
+.btn.btn-secondary {
+  color: $brand-primary;
+  background-color: #868E96;
+}
+
+a, a:hover {
+  color: inherit;
+}

@@ -1,19 +1,52 @@
 .panel {
+  display: block;
   background-color: $brand-primary;
   color: #fff;
   border: 1px solid #000;
   padding: 1rem;
-  margin: 30px 0;
+  margin-top: 30px;
+  position: relative;
 
   .panel-heading {
     font-size: 1.5em;
     margin-bottom: 30px;
   }
 
-  a {
-    color: white;
-    &:hover {
-      color: white;
+  .bottom-body {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2% 3%;
+  }
+}
+
+.panel.army-choice {
+  min-height: 540px;
+  height: 80vh;
+  background-position: top;
+  background-size: cover;
+  opacity: 0.85;
+  transition: opacity 200ms;
+
+  &:hover {
+    opacity: 1;
+    color: #fff;
+  }
+
+  &.army-DU {
+    background-image: url('/images/DU-flag.png');
+
+    .bottom-body {
+        background-color: #002868;
+    }
+  }
+
+  &.army-EL {
+    background-image: url('/images/EL-flag.png');
+
+    .bottom-body {
+        background-color: #EF0A05;
     }
   }
 }
