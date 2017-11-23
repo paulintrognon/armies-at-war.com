@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::prefix('enrolement')->group(function () {
     Route::get('/', 'EnrolementController@index')->name('enrolement.index');

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Cookie\CookieJar;
 
 class HomeController extends Controller
 {
@@ -12,14 +11,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(CookieJar $cookieJar)
+    public function index()
     {
         if (\Auth::check()) {
             $jwt = app('jwt')->generate();
-            $cookieJar->queue(cookie('shared_cookie', $jwt, 60*24*7, null, 'armies-at-war.dev'));
+
+            \Cookie::queue('aaw_token', $jwt, 60*24*7, '/', 'armies-at-war.dev');
 
             return view('logged.home');
         }
+
+        \Cookie::queue('aaw_token', null, -1, '/', 'armies-at-war.dev');;
 
         return view('home');
     }
