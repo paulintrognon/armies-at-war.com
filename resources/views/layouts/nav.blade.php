@@ -17,16 +17,14 @@
           <a class="nav-link" href="#">Forum</a>
         </li>
         <li class="nav-item">
-          <a  class="nav-link"
-              href="{{ route('logout') }}"
-              onclick="event.preventDefault();
-                       document.getElementById('logout-form').submit();">
-              Déconnection
+          <a class="nav-link" href="#">
+            {{ \Auth::user()->name}}
           </a>
-
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              {{ csrf_field() }}
-          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('logout') }}">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+          </a>
         </li>
       @endguest
     </ul>

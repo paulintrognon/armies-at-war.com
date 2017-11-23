@@ -2,33 +2,6 @@
 @import "variables";
 
 // Partiales
+@import "base";
 @import "layout";
 @import "panel";
-
-body {
-  font-family: Roboto;
-}
-
-input[type="text"],input[type="password"],input[type="email"],
-button,.btn {
-  border-radius: 0px;
-}
-
-.btn:hover {
-  background-color: #D5DAD5;
-  cursor: pointer;
-}
-
-.btn.btn-primary {
-  border-color: #fff;
-  background-color: $brand-primary;
-}
-
-.btn.btn-secondary {
-  color: $brand-primary;
-  background-color: #868E96;
-}
-
-a, a:hover {
-  color: inherit;
-}

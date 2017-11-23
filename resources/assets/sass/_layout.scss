@@ -1,6 +1,10 @@
 nav.main-nav.navbar {
   background-color: $brand-primary;
 
+  .nav-item:hover {
+    background-color: #54605a;
+  }
+
   .nav-link {
     color: #fff;
 
