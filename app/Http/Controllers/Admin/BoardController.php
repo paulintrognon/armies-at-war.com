@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Models\Board;
 
-class MapController extends \App\Http\Controllers\Controller
+class BoardController extends \App\Http\Controllers\Controller
 {
     /**
      * Show the application dashboard.
@@ -13,6 +14,6 @@ class MapController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        return view('admin.map.index');
+        return view('admin.board.index');
     }
 }

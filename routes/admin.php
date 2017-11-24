@@ -3,5 +3,5 @@
 Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\Controller@index')->name('admin.index');
 
-    Route::get('/map', 'Admin\MapController@index')->name('admin.map.index');
+    Route::get('/board', 'Admin\BoardController@index')->name('admin.board.index');
 });

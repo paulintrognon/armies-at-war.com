@@ -11,6 +11,9 @@ class ArmiesTableSeeder extends Seeder
      */
     public function run()
     {
+        if (DB::table('armies')->count() > 0) {
+            return;
+        }
         DB::table('armies')->insert([
             [
                 'name' => 'La Démocratie Unie',
