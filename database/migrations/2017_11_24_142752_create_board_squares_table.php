@@ -22,6 +22,10 @@ class CreateBoardSquaresTable extends Migration
             $table->longText('data')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('boardSquares', function (Blueprint $table) {
+            $table->foreign('soldierId', 'boardSquares_ibfk_1')->references('id')->on('soldiers')->onUpdate('CASCADE')->onDelete('CASCADE');
+        });
     }
 
     /**
@@ -31,6 +35,10 @@ class CreateBoardSquaresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('board_squares');
+        Schema::table('boardSquares', function (Blueprint $table) {
+              $table->dropForeign('boardSquares_ibfk_1');
+          });
+
+        Schema::dropIfExists('boardSquares');
     }
 }

@@ -15,9 +15,11 @@ class CreateBoardsTable extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->integer('sizeX');
             $table->integer('sizeY');
-            $table->boolean('isActive');
+            $table->string('path');
+            $table->boolean('isActive')->default(false);
             $table->timestamps();
         });
     }

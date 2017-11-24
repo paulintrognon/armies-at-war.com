@@ -15,7 +15,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{\Request::route()->getName() === 'admin.board.index' ? 'active':''}}" href="{{ route('admin.board.index') }}">
+                    <a class="nav-link {{substr(Request::path(), 0, 11) === 'admin/board' ? 'active':''}}" href="{{ route('admin.board.index') }}">
                         <i class="fa fa-map-o" aria-hidden="true"></i>
                         Carte
                     </a>

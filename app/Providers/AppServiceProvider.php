@@ -27,5 +27,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('jwt', function ($app) {
             return new \App\Services\JwtService();
         });
+        $this->app->singleton('board', function ($app) {
+            return new \App\Services\BoardService();
+        });
     }
 }
