@@ -1,7 +1,10 @@
-@extends('layouts.app')
+@extends('admin.layout')
 
-@section('title', 'Gestion de la carte')
+@section('title', 'Admin')
 
-@section('content')
-    <p>admin</p>
+@section('admin-content')
+    <h2 class="main-title">Gérer la carte</h2>
+    <div class="admin-card">
+        tes
+    </div>
 @endsection

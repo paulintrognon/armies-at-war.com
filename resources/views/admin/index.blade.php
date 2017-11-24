@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('admin.layout')
 
 @section('title', 'Admin')
 
-@section('content')
-    <p>admin</p>
+@section('admin-content')
+    Section admin
 @endsection
