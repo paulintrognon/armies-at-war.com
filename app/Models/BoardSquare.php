@@ -9,4 +9,9 @@ class BoardSquare extends Model
     protected $table = 'boardSquares';
 
     protected $guarded = ['id', 'data'];
+
+    public function board()
+    {
+        return $this->belongsTo('App\Models\Board', 'boardId');
+    }
 }

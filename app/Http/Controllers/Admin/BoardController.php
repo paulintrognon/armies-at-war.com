@@ -38,7 +38,7 @@ class BoardController extends \App\Http\Controllers\Controller
             return redirect()->route('admin.board.new.index');
         }
         $extension = $image->extension();
-        if (!in_array($extension, ['png', 'jpg', 'jpeg'])) {
+        if ($extension !== 'png') {
             return redirect()->route('admin.board.new.index');
         }
 
