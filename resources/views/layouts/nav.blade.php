@@ -10,6 +10,11 @@
           <a class="nav-link" href="{{ route('register') }}">Inscription</a>
         </li>
       @else
+        @if ($loggedUser->isAdmin)
+          <li class="nav-item">
+            <a class="nav-link" href="#">Admin</a>
+          </li>
+        @endif
         <li class="nav-item">
           <a class="nav-link" href="{{ env('APP_PLAY_URL') }}">Jouer</a>
         </li>

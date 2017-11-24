@@ -18,11 +18,11 @@ class Soldier extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'userId');
     }
 
     public function army()
     {
-        return $this->belongsTo('App\Models\Army');
+        return $this->belongsTo('App\Models\Army', 'armyId');
     }
 }

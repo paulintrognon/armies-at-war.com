@@ -14,11 +14,11 @@ class Army extends Model
 
     public function users()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany('App\Models\User', 'id', 'userId');
     }
 
     public function soldiers()
     {
-        return $this->hasMany('App\Models\Soldier');
+        return $this->hasMany('App\Models\Soldier', 'id', 'userId');
     }
 }

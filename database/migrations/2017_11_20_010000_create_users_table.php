@@ -18,13 +18,14 @@ class CreateUsersTable extends Migration
             $table->string('name')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('army_id')->unsigned()->nullable();
+            $table->boolean('isAdmin')->default(false);
+            $table->integer('armyId')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('army_id', 'users_ibfk_1')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('armyId', 'users_ibfk_1')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

@@ -15,8 +15,8 @@ class CreateSoldiersTable extends Migration
     {
         Schema::create('soldiers', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->integer('army_id')->unsigned();
+            $table->integer('userId')->unsigned();
+            $table->integer('armyId')->unsigned();
             $table->string('firstName', 20);
             $table->string('lastName', 20);
             $table->string('gender', 10);
@@ -33,8 +33,8 @@ class CreateSoldiersTable extends Migration
         });
 
         Schema::table('soldiers', function (Blueprint $table) {
-            $table->foreign('user_id', 'soldiers_ibfk_1')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('army_id', 'soldiers_ibfk_2')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('userId', 'soldiers_ibfk_1')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('armyId', 'soldiers_ibfk_2')->references('id')->on('armies')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

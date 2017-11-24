@@ -29,11 +29,11 @@ class User extends Authenticatable
 
     public function army()
     {
-        return $this->belongsTo('App\Models\Army');
+        return $this->belongsTo('App\Models\Army', 'armyId');
     }
 
     public function soldiers()
     {
-        return $this->hasMany('App\Models\Soldier');
+        return $this->hasMany('App\Models\Soldier', 'id', 'userId');
     }
 }
