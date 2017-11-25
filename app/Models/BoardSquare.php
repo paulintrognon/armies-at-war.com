@@ -8,6 +8,8 @@ class BoardSquare extends Model
 {
     protected $table = 'boardSquares';
 
+    public $timestamps = false;
+
     protected $guarded = ['id', 'data'];
 
     public function board()

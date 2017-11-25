@@ -21,7 +21,6 @@ class CreateBoardSquaresTable extends Migration
             $table->string('terrain');
             $table->integer('soldierId')->unsigned()->nullable();
             $table->longText('data')->nullable();
-            $table->timestamps();
         });
 
         Schema::table('boardSquares', function (Blueprint $table) {
