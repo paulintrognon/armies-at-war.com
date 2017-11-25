@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Board;
 use App\Models\BoardSquare;
+use App\Models\Terrain;
 
 class BoardService {
 
@@ -35,33 +36,36 @@ class BoardService {
 
     protected function generateBoardSquares($imagePath, Board $board)
     {
+        $terrains = [];
+        foreach (Terrain::all() as $terrain) {
+            $terrains[$terrain->color] = $terrain->id;
+        };
+
         $image = imagecreatefrompng($imagePath);
         for($x = 0; $x < $board->sizeX; $x++) {
+            $squaresToInsert = [];
+
             for($y = 0; $y < $board->sizeY; $y++) {
-                $index = imagecolorat($image, $x, $y);
-                $color = str_pad(dechex($index), 6, '0', STR_PAD_LEFT);
-                $terrain = $this->color2terrain($color);
-                $square = new BoardSquare([
+
+                $color = $this->getHexColor($image, $x, $y);
+                $terrain = $terrains[$color];
+
+                $squaresToInsert[] = [
                     'x' => $x,
                     'y' => $y,
-                    'terrain' => $terrain,
-                ]);
-                $square->board()->associate($board);
-                $square->save();
+                    'boardId' => $board->id,
+                    'terrainId' => $terrain,
+                    'y' => $y,
+                ];
             }
+
+            BoardSquare::insert($squaresToInsert);
         }
     }
 
-    protected function color2terrain($color)
+    protected function getHexColor($image, $x, $y)
     {
-        return config('color2terrain')[$color];
-    }
-
-    protected function colorIndexToHex($index)
-    {
-        $r = ($index >> 16) & 0xFF;
-        $g = ($index >> 8) & 0xFF;
-        $b = $index & 0xFF;
-        return dechex($r).dechex($g).dechex($b);
+        $index = imagecolorat($image, $x, $y);
+        return str_pad(dechex($index), 6, '0', STR_PAD_LEFT);
     }
 }

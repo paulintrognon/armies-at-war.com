@@ -18,14 +18,15 @@ class CreateBoardSquaresTable extends Migration
             $table->integer('boardId')->unsigned();
             $table->integer('x');
             $table->integer('y');
-            $table->string('terrain');
+            $table->integer('terrainId')->unsigned();
             $table->integer('soldierId')->unsigned()->nullable();
             $table->longText('data')->nullable();
         });
 
         Schema::table('boardSquares', function (Blueprint $table) {
             $table->foreign('boardId', 'boardSquares_ibfk_1')->references('id')->on('boards')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('soldierId', 'boardSquares_ibfk_2')->references('id')->on('soldiers')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('terrainId', 'boardSquares_ibfk_2')->references('id')->on('terrains')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('soldierId', 'boardSquares_ibfk_3')->references('id')->on('soldiers')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -39,6 +40,7 @@ class CreateBoardSquaresTable extends Migration
         Schema::table('boardSquares', function (Blueprint $table) {
               $table->dropForeign('boardSquares_ibfk_1');
               $table->dropForeign('boardSquares_ibfk_2');
+              $table->dropForeign('boardSquares_ibfk_3');
           });
 
         Schema::dropIfExists('boardSquares');

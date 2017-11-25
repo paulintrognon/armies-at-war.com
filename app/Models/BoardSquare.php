@@ -16,4 +16,9 @@ class BoardSquare extends Model
     {
         return $this->belongsTo('App\Models\Board', 'boardId');
     }
+
+    public function terrain()
+    {
+        return $this->belongsTo('App\Models\Terrain', 'terrainId');
+    }
 }
