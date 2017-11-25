@@ -17,7 +17,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{substr(Request::path(), 0, 11) === 'admin/board' ? 'active':''}}" href="{{ route('admin.board.index') }}">
                         <i class="fa fa-map-o" aria-hidden="true"></i>
-                        Carte
+                        Cartes
                     </a>
                 </li>
             </ul>

@@ -15,8 +15,8 @@ class BoardService {
 
     public function loadImage($name, $image)
     {
-        $path = 'app/'.$image->store('images');
-        $fullPath = storage_path($path);
+        $path = $image->storeAs('public/images/boards', "$name.png");
+        $fullPath = storage_path('app/'.$path);
 
         $imageMeta = getimagesize($fullPath);
         $sizeX = $imageMeta[0];
@@ -26,12 +26,10 @@ class BoardService {
             'name' => $name,
             'sizeX' => $sizeX,
             'sizeY' => $sizeY,
-            'path' => $path,
+            'path' => "storage/images/boards/$name.png",
         ]);
 
         $this->generateBoardSquares($fullPath, $board);
-
-        dd($board);
     }
 
     protected function generateBoardSquares($imagePath, Board $board)

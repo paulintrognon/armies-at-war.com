@@ -14,13 +14,13 @@ class BoardController extends \App\Http\Controllers\Controller
      */
     public function index()
     {
-        $board = app('board')->getCurrentBoard();
-        if (!$board) {
+        $boards = Board::all();
+        if (!$boards->count()) {
             return redirect()->route('admin.board.new.index');
         }
 
         return view('admin.board.index', [
-            'board' => $board,
+            'boards' => $boards,
         ]);
     }
 
