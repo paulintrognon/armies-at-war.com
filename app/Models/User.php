@@ -34,6 +34,6 @@ class User extends Authenticatable
 
     public function soldiers()
     {
-        return $this->hasMany('App\Models\Soldier', 'id', 'userId');
+        return $this->hasMany('App\Models\Soldier', 'userId');
     }
 }

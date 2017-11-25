@@ -53,7 +53,7 @@ class TerrainsTableSeeder extends Seeder
             [
                 'name' => 'Ville',
                 'slug' => 'city',
-                'color' => '555555',
+                'color' => '333333',
                 'walkable' => false,
                 'movement' => null,
             ],

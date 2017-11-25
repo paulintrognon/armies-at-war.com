@@ -7,21 +7,54 @@ use App\Models\Board;
 
 class BoardController extends \App\Http\Controllers\Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
+    {
+        $board = app('board')->getCurrentBoard();
+        if (!$board) {
+            return redirect()->route('admin.board.list');
+        }
+        return view('admin.board.board', [
+            'board' => $board,
+        ]);
+    }
+
+    public function list()
     {
         $boards = Board::all();
         if (!$boards->count()) {
             return redirect()->route('admin.board.new.index');
         }
 
-        return view('admin.board.index', [
+        return view('admin.board.list', [
             'boards' => $boards,
         ]);
+    }
+
+    public function activateBoard($boardId)
+    {
+        $board = Board::find($boardId);
+        if (!$board) {
+            abort(404);
+        }
+        Board::where('isActive', true)->update([
+            'isActive' => false
+        ]);
+        $board->isActive = true;
+        $board->save();
+
+        return redirect()->route('admin.board.index');
+    }
+
+    public function disactivateBoard($boardId)
+    {
+        $board = Board::find($boardId);
+        if (!$board) {
+            abort(404);
+        }
+        $board->isActive = false;
+        $board->save();
+
+        return redirect()->route('admin.board.index');
     }
 
     public function createNew()
