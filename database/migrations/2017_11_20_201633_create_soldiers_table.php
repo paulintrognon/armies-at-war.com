@@ -22,8 +22,8 @@ class CreateSoldiersTable extends Migration
             $table->string('gender', 10);
             $table->integer('healthPoints');
             $table->integer('actionPoints');
-            $table->integer('coordinateX')->nullable();
-            $table->integer('coordinateY')->nullable();
+            $table->integer('x')->nullable();
+            $table->integer('y')->nullable();
             $table->integer('sight');
             $table->dateTime('lastTurn');
             $table->dateTime('nextTurn');
