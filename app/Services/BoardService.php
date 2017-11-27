@@ -15,7 +15,8 @@ class BoardService {
 
     public function loadImage($name, $image)
     {
-        $path = $image->storeAs('public/images/boards', "$name.png");
+        $path = $image->store('public/images/boards');
+        $fileName = explode('/', $path)[3];
         $fullPath = storage_path('app/'.$path);
 
         $imageMeta = getimagesize($fullPath);
@@ -26,7 +27,7 @@ class BoardService {
             'name' => $name,
             'sizeX' => $sizeX,
             'sizeY' => $sizeY,
-            'path' => "storage/images/boards/$name.png",
+            'path' => "storage/images/boards/$fileName",
         ]);
 
         $this->generateBoardSquares($fullPath, $board);
@@ -46,6 +47,10 @@ class BoardService {
             for($y = 0; $y < $board->sizeY; $y++) {
 
                 $color = $this->getHexColor($image, $x, $y);
+                if (!isset($terrains[$color])) {
+                    throw new Exception("No terrain found for color $color", 1);
+                }
+
                 $terrain = $terrains[$color];
 
                 $squaresToInsert[] = [
