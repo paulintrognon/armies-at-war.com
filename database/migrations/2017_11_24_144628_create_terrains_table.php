@@ -18,7 +18,7 @@ class CreateTerrainsTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->string('color');
-            $table->boolean('walkable');
+            $table->boolean('isWalkable');
             $table->integer('movement')->nullable();
         });
     }
