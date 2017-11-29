@@ -12,4 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
+   .copy('resources/assets/css/bootstrap.css', 'public/css/bootstrap.css')
+   .copy('resources/assets/css/bootstrap-extend.css', 'public/css/bootstrap-extend.css')
+   .copy('resources/assets/css/remark.css', 'public/css/remark.css')
    .sass('resources/assets/sass/app.scss', 'public/css');

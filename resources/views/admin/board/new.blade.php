@@ -2,8 +2,8 @@
 
 @section('title', 'Nouvelle carte - Admin')
 
-@section('admin-content')
-  <h2 class="main-title">
+@section('content')
+  <h2 class="page-title">
     Gérer la carte
   </h2>
   <div class="admin-card">

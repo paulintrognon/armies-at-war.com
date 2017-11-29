@@ -2,6 +2,6 @@
 
 @section('title', 'Admin')
 
-@section('admin-content')
-    Section admin
+@section('content')
+  Section admin
 @endsection
