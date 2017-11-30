@@ -1,14 +1,14 @@
-<nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega">
-  <div class="navbar-header">
+<nav class="site-navbar navbar navbar-inverse navbar-fixed-top navbar-mega">
+  <div class="navbar-header" style="background-image: url('/images/camou_bg.jpg');">
     <div class="navbar-brand navbar-brand-center site-gridmenu-toggle active" data-toggle="gridmenu" aria-expanded="true">
-      <span class="navbar-brand-text hidden-xs-down">
+      <span class="navbar-brand-text hidden-xs-down logo-font">
         Armies At War
       </span>
     </div>
   </div>
   <div class="navbar-container container-fluid">
     <div class="collapse navbar-collapse navbar-collapse-toolbar">
-      <ul class="nav navbar-toolbar">
+      <ul class="nav navbar-toolbar menu-font">
         @guest
         @else
           <li class="nav-item">
