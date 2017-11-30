@@ -32,6 +32,11 @@ class EnrolementController extends Controller
 
     public function chooseArmy()
     {
+        $user = \Auth::user();
+        if ($user->army) {
+            return redirect()->route('enrolement.createSoldiers');
+        }
+
         $armies = Army::all();
 
         return view('logged.enrolement.chooseArmy', [
@@ -59,9 +64,14 @@ class EnrolementController extends Controller
 
     public function createSoldiers()
     {
-        $army = \Auth::user()->army;
+        $user = \Auth::user();
+        if ($user->soldier) {
+            return redirect(env('APP_PLAY_URL'));
+        }
+        $army = $user->army;
         return view('logged.enrolement.createSoldiers', [
             'army' => $army,
+            'user' => $user,
         ]);
     }
 

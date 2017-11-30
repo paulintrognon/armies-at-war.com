@@ -1,36 +1,44 @@
 @extends('layouts.app')
 
-@section('content')
-  <div class="container">
-    <h4 class="centered-title">
-      Veuillez à présent choisir votre armée.
-    </h4>
+@section('title', 'Choix de l\'armée')
 
-    <div class="row">
-      @foreach ($armies as $army)
-        <div class="col-6">
-          <a class="panel army-choice army-{{$army->code}}" href="{{ route('enrolement.chooseArmy.post', ['armyId' => $army->id])}}">
-            <div class="bottom-body">
-              <h4>
-                {{$army->name}}
-              </h4>
-              <p>
-                @if ($army->code === 'DU')
-                  La démocratie, c'est la paix, et la paix, c'est la prospérité.<br>
-                  Notre devoir est de promouvoir la démocratie et la libertée,<br>
-                  et ce par tous les moyens jugés nécéssaires.<br>
-                  Car la fin, nous le savons tous, justifie les moyens.<br>
-                @elseif ($army->code === 'EL')
-                  La Foi est notre Force, La Foi est notre Guide.<br>
-                  Nous avons Foi en l'Empereur, Loué soit l'Empereur !<br>
-                  Nous avons Foi en l'Empire, Gloire au Grand Empire !<br>
-                  La Foi sera la Victoire sur les Hérétiques.<br>
-                @endif
-              </p>
+@section('page-header', 'Veuillez à présent choisir votre armée.')
+
+@section('content')
+  <div class="row">
+    @foreach ($armies as $army)
+      <div class="col-{{12/$armies->count()}} text-center">
+        <div class="card">
+          <div class="card-block" style="background: url('/images/{{$army->code}}-flag.png');background-size:cover;height:50vh;margin-bottom:20px;">
+          </div>
+          <div class="card-block">
+            <h4 class="card-title">
+              {{$army->name}}
+            </h4>
+            <div class="card-text">
+              @if ($army->code === 'DU')
+                La démocratie, c'est la paix, et la paix, c'est la prospérité.<br>
+                Notre devoir est de promouvoir la démocratie,<br>
+                et ce par tous les moyens jugés nécéssaires.<br>
+                Car la fin, nous le savons tous, justifie les moyens.<br>
+              @elseif ($army->code === 'EL')
+                Le Vénérable nous montre la Voie,<br>
+                Cette Voie nous protège et nous libère.<br>
+                La Voie nous menera vers le Grand Jour.<br>
+                Vive le Vénérable, Vive l'Empire du Levant !<br>
+              @endif
             </div>
-          </a>
+          </div>
+          <div class="card-block">
+            <div class="card-text">
+              <a class="btn btn-primary" href="{{ route('enrolement.chooseArmy.post', ['armyId' => $army->id])}}">
+                Rejoindre
+                {{$army->name}}
+              </a>
+            </div>
+          </div>
         </div>
-      @endforeach
-    </div>
+      </div>
+    @endforeach
   </div>
 @endsection

@@ -4,23 +4,26 @@
   Création de vos soldats
 @endsection
 
+@section('page-header')
+  Création de vos soldats
+@endsection
+
 @section('content')
-  <div class="container">
-    <h4 class="centered-title">
-      Chaque joueur à droit à 2 soldats.
-    </h4>
-    <form method="POST" action="{{ route('enrolement.createSoldiers.post') }}">
+  <form method="POST" action="{{ route('enrolement.createSoldiers.post') }}">
       {{ csrf_field() }}
       <div class="row">
         @foreach ([0, 1] as $soldierIndex)
           <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">Soldat N°{{$soldierIndex+1}}</div>
+            <div class="panel">
+              <div class="panel-heading">
+                <h3 class="panel-title">
+                  Soldat N°{{$soldierIndex+1}}
+                </h3>
+              </div>
               <div class="panel-body">
                 <div class="form-group{{ $errors->has("gender[$soldierIndex]") ? ' has-error' : '' }}">
                   <div class="row">
                     <label for="gender[{{$soldierIndex}}]" class="col-md-4 control-label">Sexe</label>
-
                     <div class="col-md-6">
                       <select name="gender[{{$soldierIndex}}]">
                         <option value="male">Homme</option>
@@ -35,7 +38,7 @@
                     <label for="firstName[{{$soldierIndex}}]" class="col-md-4 control-label">Prénom</label>
 
                     <div class="col-md-6">
-                      <input id="firstName[{{$soldierIndex}}]" type="text" class="form-control" name="firstName[{{$soldierIndex}}]" value="{{ old('firstName[0]') }}" required autofocus placeholder="Prénom">
+                      <input id="firstName[{{$soldierIndex}}]" type="text" class="form-control" name="firstName[{{$soldierIndex}}]" value="{{ old('firstName[0]') }}" required placeholder="Veuillez choisir un prénom">
                       @if ($errors->has("firstName[$soldierIndex]"))
                         <span class="help-block">
                           <strong>{{ $errors->first("firstName[$soldierIndex]") }}</strong>
@@ -50,7 +53,7 @@
                     <label for="lastName[{{$soldierIndex}}]" class="col-md-4 control-label">Nom de famille</label>
 
                     <div class="col-md-6">
-                      <input id="lastName[{{$soldierIndex}}]" type="text" class="form-control" name="lastName[{{$soldierIndex}}]" value="{{ old('lastName[0]') }}" required autofocus placeholder="Nom de famille">
+                      <input id="lastName[{{$soldierIndex}}]" type="text" class="form-control" name="lastName[{{$soldierIndex}}]" value="{{ old('lastName[0]') ? old('lastName[0]') : $user->name }}" required placeholder="Veuillez choisir un nom">
                       @if ($errors->has("lastName[$soldierIndex]"))
                         <span class="help-block">
                           <strong>{{ $errors->first("lastName[$soldierIndex]") }}</strong>
@@ -62,7 +65,7 @@
 
                 <div class="row">
                   <div class="col-md-6 offset-md-4">
-                    <button type="button" class="btn" onclick="randomizeNames({{$soldierIndex}})">
+                    <button type="button" class="btn btn-outline btn-default" onclick="randomizeNames({{$soldierIndex}})">
                       Générer aléatoirement
                     </button>
                   </div>
@@ -72,11 +75,10 @@
           </div>
         @endforeach
       </div>
-      <p class="centered-title">
-        <input type="submit" value="À l'attaque !" class="btn btn-lg">
+      <p class="text-center">
+        <input type="submit" value="À l'attaque !" class="btn btn-lg btn-primary">
       </p>
     </form>
-  </div>
 @endsection
 
 @push('scripts')

@@ -18,7 +18,7 @@
             <a class="nav-link" href="#">Forum</a>
           </li>
           @if ($loggedUser->isAdmin)
-            <li class="nav-item">
+            <li class="nav-item {{substr(Request::path(), 0, 5) === 'admin' ? 'active':''}}">
               <a class="nav-link" href="/admin">Admin</a>
             </li>
           @endif
