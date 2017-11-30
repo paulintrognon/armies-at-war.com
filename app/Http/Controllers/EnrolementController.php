@@ -65,7 +65,7 @@ class EnrolementController extends Controller
     public function createSoldiers()
     {
         $user = \Auth::user();
-        if ($user->soldier) {
+        if ($user->soldiers->count()) {
             return redirect(env('APP_PLAY_URL'));
         }
         $army = $user->army;
