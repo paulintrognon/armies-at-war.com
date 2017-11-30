@@ -30,6 +30,13 @@
     </div>
   </div>
   <div class="page">
+    @if(View::hasSection('page-header'))
+      <div class="page-header">
+        <h2 class="page-title">
+          @yield('page-header')
+        </h2>
+      </div>
+    @endif
     <div class="page-content container-fluid">
       @yield('content')
     </div>
